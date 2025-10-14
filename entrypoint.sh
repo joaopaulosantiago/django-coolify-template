@@ -11,4 +11,4 @@ do
     sleep 2
 done
 
-gunicorn --bind :8000 --workers 2 djproject.wsgi
+gunicorn --bind :8000 --workers 2 django_coolify_template.wsgi

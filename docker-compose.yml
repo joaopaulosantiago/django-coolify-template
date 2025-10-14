@@ -3,7 +3,7 @@ version: '3'
 
 services:
   server:
-    container_name: djproject
+    container_name: django-coolify-template
     restart: unless-stopped
     build:
       context: .

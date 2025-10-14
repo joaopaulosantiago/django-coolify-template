@@ -18,7 +18,7 @@ Este projeto Django demonstra como configurar e fazer deploy de uma aplicação 
 
 ### Pré-requisitos
 
-1. **Servidor VPS ou VM** (recomendado: [Hetzner](https://www.hetzner.com/) a partir de $5/mês)
+1. **Servidor VPS ou VM** 
 2. **Coolify instalado** - Siga as [instruções de instalação](https://coolify.io/docs/installation)
 3. **Repositório Git** (GitHub, GitLab, Bitbucket, etc.)
 
@@ -26,8 +26,8 @@ Este projeto Django demonstra como configurar e fazer deploy de uma aplicação 
 
 1. **Clone o repositório:**
 ```bash
-git clone https://github.com/joaopaulosantiago/djproject.git
-cd djproject
+git clone https://github.com/joaopaulosantiago/django-coolify-template.git
+cd django-coolify-template
 ```
 
 2. **Crie e ative o ambiente virtual:**
@@ -105,8 +105,8 @@ Clique em **"Deploy"** no Coolify. O deploy será automático a cada push na bra
 ## 📁 Estrutura do Projeto
 
 ```
-djproject/
-├── djproject/
+django-coolify-template/
+├── django_coolify_template/
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── settings.py          # Configurações com variáveis de ambiente
@@ -174,7 +174,7 @@ Se você copiar este projeto e quiser usar um nome diferente, **OBRIGATORIAMENTE
 
 ### 1. **Renomeie a pasta principal**
 ```bash
-# De: djproject/
+# De: django_coolify_template/
 # Para: seu_novo_nome/
 ```
 
@@ -182,7 +182,7 @@ Se você copiar este projeto e quiser usar um nome diferente, **OBRIGATORIAMENTE
 Altere a linha `ROOT_URLCONF`:
 ```python
 # De:
-ROOT_URLCONF = 'djproject.urls'
+ROOT_URLCONF = 'django_coolify_template.urls'
 
 # Para:
 ROOT_URLCONF = 'seu_novo_nome.urls'
@@ -191,7 +191,7 @@ ROOT_URLCONF = 'seu_novo_nome.urls'
 Altere a linha `WSGI_APPLICATION`:
 ```python
 # De:
-WSGI_APPLICATION = 'djproject.wsgi.application'
+WSGI_APPLICATION = 'django_coolify_template.wsgi.application'
 
 # Para:
 WSGI_APPLICATION = 'seu_novo_nome.wsgi.application'
@@ -200,7 +200,7 @@ WSGI_APPLICATION = 'seu_novo_nome.wsgi.application'
 ### 3. **Arquivo `wsgi.py`**
 ```python
 # De:
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_coolify_template.settings')
 
 # Para:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seu_novo_nome.settings')
@@ -209,7 +209,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seu_novo_nome.settings')
 ### 4. **Arquivo `asgi.py`**
 ```python
 # De:
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_coolify_template.settings')
 
 # Para:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seu_novo_nome.settings')
@@ -218,7 +218,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seu_novo_nome.settings')
 ### 5. **Arquivo `manage.py`**
 ```python
 # De:
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_coolify_template.settings')
 
 # Para:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seu_novo_nome.settings')
@@ -227,7 +227,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seu_novo_nome.settings')
 ### 6. **Arquivo `entrypoint.sh`**
 ```bash
 # De:
-gunicorn --bind :8000 --workers 2 djproject.wsgi
+gunicorn --bind :8000 --workers 2 django_coolify_template.wsgi
 
 # Para:
 gunicorn --bind :8000 --workers 2 seu_novo_nome.wsgi
@@ -238,10 +238,10 @@ gunicorn --bind :8000 --workers 2 seu_novo_nome.wsgi
 # Altere o container_name se desejar:
 services:
     server:
-        container_name: seu_novo_nome  # De: djproject
+        container_name: seu_novo_nome  # De: django-coolify-template
 ```
 
-### ⚠️ **ERRO COMUM**: `ModuleNotFoundError: No module named 'djproject'`
+### ⚠️ **ERRO COMUM**: `ModuleNotFoundError: No module named 'django_coolify_template'`
 
 Se você esquecer de alterar essas configurações, receberá este erro. Certifique-se de alterar **TODOS** os arquivos listados acima.
 
@@ -279,7 +279,7 @@ Para debugar problemas:
 - Confirme se `CSRF_TRUSTED_ORIGINS` está correto
 - Use `DEBUG=True` temporariamente para ver detalhes
 
-### Erro "ModuleNotFoundError: No module named 'djproject'"
+### Erro "ModuleNotFoundError: No module named 'django_coolify_template'"
 
 **Causa**: Você copiou o projeto mas não atualizou as referências internas.
 
